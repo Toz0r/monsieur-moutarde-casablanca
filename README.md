@@ -1,4 +1,4 @@
-# Maison Dijon
+# Monsieur Moutarde
 
 Site vitrine statique d’une brasserie haute gamme d’inspiration dijonnaise à Casablanca : présentation, esprit et carte.
 
