@@ -61,3 +61,9 @@ h1 em{font-weight:500}
 .style h2,.pillars h3{color:var(--wine)}
 .band img{object-position:center 30%}
 dt b{font:500 1rem 'Jost',sans-serif;color:var(--gold)}
+.galerie{text-align:center;padding-top:0}
+.galerie .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.galerie img{width:100%;aspect-ratio:1;object-fit:cover}
+.dish{max-width:560px;aspect-ratio:1}
+@media(max-width:860px){.galerie .grid{grid-template-columns:1fr}}
+.hero img{object-position:70% center}
