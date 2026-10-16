@@ -80,3 +80,9 @@ dt b{font:500 1rem 'Jost',sans-serif;color:var(--gold)}
 .roll span{grid-area:1/1;opacity:0;transform:translateY(100%);transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .6s;white-space:nowrap}
 .roll span.on{opacity:1;transform:none}
 .roll span.off{opacity:0;transform:translateY(-100%)}
+.style{background:var(--green2);color:var(--ink);border-top:1px solid rgba(226,185,79,.3);border-bottom:1px solid rgba(226,185,79,.3)}
+.style h2{color:var(--cream)}
+.pillars span{color:var(--gold)}
+.pillars h3{color:var(--cream);border-bottom-color:rgba(226,185,79,.5)}
+.pillars p{color:var(--muted)}
+.band{background:var(--green)}
