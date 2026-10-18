@@ -86,3 +86,16 @@ dt b{font:500 1rem 'Jost',sans-serif;color:var(--gold)}
 .pillars h3{color:var(--cream);border-bottom-color:rgba(226,185,79,.5)}
 .pillars p{color:var(--muted)}
 .band{background:var(--green)}
+.carousel{position:relative;margin-top:2rem}
+.track{list-style:none;display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth}
+.track::-webkit-scrollbar{display:none}
+.track li{flex:0 0 calc((100% - 2rem)/3);scroll-snap-align:start}
+.track img{width:100%;aspect-ratio:4/5;object-fit:cover;border:1px solid rgba(226,185,79,.25)}
+.car-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:48px;height:48px;border-radius:50%;border:1px solid var(--gold);background:rgba(33,23,15,.8);color:var(--gold);font-size:1.8rem;line-height:1;cursor:pointer;transition:.25s}
+.car-btn:hover{background:var(--gold);color:var(--green)}
+.prev{left:-12px}.next{right:-12px}
+.dots{display:flex;justify-content:center;gap:.5rem;margin-top:1.5rem}
+.dots span{width:8px;height:8px;border-radius:50%;background:rgba(226,185,79,.3);cursor:pointer;transition:.25s}
+.dots span.on{background:var(--gold);width:24px;border-radius:4px}
+@media(max-width:860px){.track li{flex-basis:85%}.prev{left:4px}.next{right:4px}}
+.galerie .note{margin-top:1.5rem}

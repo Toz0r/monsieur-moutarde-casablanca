@@ -120,14 +120,22 @@
 
 <section class="galerie">
   <p class="kicker">En images</p>
-  <div class="grid">
-    <img src="assets/enseigne.jpg" alt="L'enseigne Monsieur Moutarde, Vin &amp; Cuisine">
-    <img src="assets/salle.jpg" alt="Le lettrage Monsieur Moutarde sur le miroir de la salle">
-    <img src="assets/salle3.jpg" alt="Tables dressées et chaises bistro">
-    <img src="assets/cave.jpg" alt="La cave à vin en bois">
-    <img src="assets/plat.jpg" alt="Un plat de Monsieur Moutarde">
-    <img src="assets/ardoise.jpg" alt="L'ardoise de l'afterwork">
+  <h2>Une soirée chez Monsieur</h2>
+  <div class="carousel" aria-roledescription="carrousel" aria-label="Photos de Monsieur Moutarde">
+    <button class="car-btn prev" aria-label="Photo précédente">&#8249;</button>
+    <ul class="track">
+      <li><img loading="lazy" src="assets/enseigne.jpg" alt="L'enseigne Monsieur Moutarde, Vin &amp; Cuisine"></li>
+      <li><img loading="lazy" src="assets/salle.jpg" alt="Le lettrage Monsieur Moutarde sur le miroir de la salle"></li>
+      <li><img loading="lazy" src="assets/salle3.jpg" alt="Tables dressées et chaises bistro"></li>
+      <li><img loading="lazy" src="assets/cave.jpg" alt="La cave à vin en bois"></li>
+      <li><img loading="lazy" src="assets/agneau.jpg" alt="Souris d'agneau et gratin"></li>
+      <li><img loading="lazy" src="assets/plat.jpg" alt="Un plat de Monsieur Moutarde"></li>
+      <li><img loading="lazy" src="assets/ardoise.jpg" alt="L'ardoise de l'afterwork"></li>
+      <li><img loading="lazy" src="assets/salle2.jpg" alt="La salle, miroirs et lampes"></li>
+    </ul>
+    <button class="car-btn next" aria-label="Photo suivante">&#8250;</button>
   </div>
+  <div class="dots" aria-hidden="true"></div>
   <p class="note"><a href="https://www.instagram.com/mrmoutarde.casablanca/">Suivez-nous sur Instagram @mrmoutarde.casablanca</a></p>
 </section>
 
@@ -142,6 +150,20 @@
 (()=>{const r=document.querySelector('.roll');if(!r)return;const it=[...r.children];let i=0;it[0].classList.add('on');
 if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 setInterval(()=>{it[i].classList.remove('on');it[i].classList.add('off');const p=i;setTimeout(()=>it[p].classList.remove('off'),600);i=(i+1)%it.length;it[i].classList.add('on')},2600)})();
+</script>
+<script>
+(()=>{const c=document.querySelector('.carousel');if(!c)return;const t=c.querySelector('.track'),s=[...t.children],d=document.querySelector('.dots');
+s.forEach((_,i)=>{const b=document.createElement('span');b.onclick=()=>go(i);d.appendChild(b)});
+const w=()=>s[0].getBoundingClientRect().width+parseFloat(getComputedStyle(t).columnGap||16);
+const idx=()=>Math.round(t.scrollLeft/w());
+const go=i=>{const n=s.length;i=(i+n)%n;t.scrollTo({left:i*w(),behavior:'smooth'})};
+const upd=()=>{const i=idx();[...d.children].forEach((b,j)=>b.classList.toggle('on',j===i))};
+t.addEventListener('scroll',()=>requestAnimationFrame(upd));upd();
+c.querySelector('.prev').onclick=()=>go(idx()-1);c.querySelector('.next').onclick=()=>go(t.scrollLeft+t.clientWidth>=t.scrollWidth-5?0:idx()+1);
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+let timer=setInterval(()=>c.querySelector('.next').click(),4000);
+c.addEventListener('mouseenter',()=>clearInterval(timer));c.addEventListener('mouseleave',()=>timer=setInterval(()=>c.querySelector('.next').click(),4000));
+t.addEventListener('touchstart',()=>clearInterval(timer),{passive:true});})();
 </script>
 </body>
 </html>
